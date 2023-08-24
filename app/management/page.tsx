@@ -109,8 +109,6 @@ export default function page() {
       };
       
       const response = await axios.put(`http://localhost:3001/api/v1/scholarships/${programID}`, requestBody);
-      console.log(requestBody);
-      console.log(response);
       if (response.status === 200) {
         alert('Scholarship update successfully:');
         setUniversity('');
@@ -139,18 +137,21 @@ export default function page() {
   };
 
 
-  function convertDateFormat(inputDate) {
-    const months = {
+  function convertDateFormat(inputDate : string) {
+    if (inputDate.startsWith('2')) {
+      return inputDate;
+    } else {
+    const months: { [key: string]: string } = {
       Jan: '01', Feb: '02', Mar: '03', Apr: '04',
       May: '05', Jun: '06', Jul: '07', Aug: '08',
       Sep: '09', Oct: '10', Nov: '11', Dec: '12'
     };
   
     const [month, year] = inputDate.split(',');
-    console.log(month, year);
     const formattedMonth = months[month];
     return `${year}-${formattedMonth}`;
   }
+}
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -186,7 +187,7 @@ export default function page() {
     setBtnStatus("Create");
   }
 
-  const showModal = (programId) => {
+  const showModal = (programId : number) => {
     setSelectedProgramId(programId);
     setIsModalVisible(true);
   };
@@ -213,7 +214,6 @@ export default function page() {
 
   const editScholarship = async (scholarship) => {
     const date = convertDateFormat(scholarship.start_date);
-    console.log(date);
     setBtnStatus("Update");
     setUniversity(scholarship.university);
     setProgramName(scholarship.program_name);

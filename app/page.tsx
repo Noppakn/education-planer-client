@@ -13,29 +13,6 @@ const inter = Inter({ subsets: ['latin'] })
 
 
 export default function Home() {
-  const options = [
-    {value: 'Program',label: 'Program'},
-    {value: 'University',label: 'University'}
-  ]
-  
-  const [inputValue, setInputValue] = useState('');
-  const router = useRouter();
-
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
-
-  const handleSearch = () => {
-    if (inputValue) {
-      const searchUrl = format({
-        pathname: '/search',
-        query: { keyword: inputValue },
-      });
-
-      router.push(searchUrl);
-    }
-  };
 
   return (
     <main className={inter.className}>
@@ -50,7 +27,7 @@ export default function Home() {
           />
         </div>
         <div className='py-10 bg-[#F5F5F5] w-full md:w-2/4 flex flex-col md:flex-row items-center justify-center relative rounded-lg '>
-          <Button href='/search' onClick={handleSearch} type="primary" danger className='py-2 px-4 bg-red-500 text-white rounded-md flex items-center mb-3 md:mb-0 md:mr-5'>
+          <Button href='/search' type="primary" danger className='py-2 px-4 bg-red-500 text-white rounded-md flex items-center mb-3 md:mb-0 md:mr-5'>
             <SearchOutlined />
             Search
           </Button>

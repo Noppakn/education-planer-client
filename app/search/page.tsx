@@ -6,12 +6,10 @@ import UKflag from '@/app/images/UK-flag.png'
 import CHflag from '@/app/images/CH-flag.png'
 import { Select, Switch ,Modal} from 'antd';
 import { CalendarOutlined, CloseOutlined, CheckOutlined,SwapOutlined } from '@ant-design/icons';
-import { useRouter } from 'next/navigation';
+
 
 const ITEMS_PER_PAGE = 5;
 export default function Search() {
-    const router = useRouter();
-    
 
     const [scholarships, setScholarships] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
