@@ -108,7 +108,7 @@ export default function page() {
         
       };
       
-      const response = await axios.put(`http://4.194.6.98:3001//api/v1/scholarships/${programID}`, requestBody);
+      const response = await axios.put(`http://4.194.6.98:3001/api/v1/scholarships/${programID}`, requestBody);
       if (response.status === 200) {
         alert('Scholarship update successfully:');
         setUniversity('');
